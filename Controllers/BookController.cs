@@ -1,36 +1,36 @@
-﻿using pyrikova.Domain;
-using pyrikova.Repository;
+﻿using library.Domain;
+using library.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace pyrikova.Controllers
+namespace library.Controllers
 {
     [ApiController]
-    [Route("/admin")]
-    public class AdminController : ControllerBase
+    [Route("/book")]
+    public class BookController : ControllerBase
     {
         [HttpPut]
-        public Admin Create(Admin admin)
+        public Book Create(Book book)
         {
-            Storage.AdminStorage.Create(admin);
-            return admin;
+            Storage.BookStorage.Create(book);
+            return book;
         }
 
         [HttpGet]
-        public Admin Read(int adminId)
+        public Book Read(int bookId)
         {
-            return Storage.AdminStorage.Read(adminId);
+            return Storage.BookStorage.Read(bookId);
         }
 
         [HttpPost]
-        public Admin Update(int adminId, Admin newAdmin)
+        public Book Update(int bookId, Book newBook)
         {
-            return Storage.AdminStorage.Update(adminId, newAdmin);
+            return Storage.BookStorage.Update(bookId, newBook);
         }
 
         [HttpDelete]
-        public bool Delete(int adminId)
+        public bool Delete(int bookId)
         {
-            return Storage.AdminStorage.Delete(adminId); ;
+            return Storage.BookStorage.Delete(bookId); ;
         }
     }
 }

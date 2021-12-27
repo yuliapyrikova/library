@@ -1,24 +1,36 @@
-﻿using pyrikova.Domain;
-using pyrikova.Repository;
+﻿using library.Domain;
+using library.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace pyrikova.Controllers
+namespace library.Controllers
 {
     [ApiController]
-    [Route("/personalData")]
-    public class PersonalDataController : ControllerBase
+    [Route("/payment")]
+    public class PaymentController : ControllerBase
     {
         [HttpPut]
-        public PersonalData Create(PersonalData personalData)
+        public Payment Create(Payment payment)
         {
-            Storage.PersonalDataStorage.Create(personalData);
-            return personalData;
+            Storage.PaymentStorage.Create(payment);
+            return payment;
         }
 
         [HttpGet]
-        public PersonalData Read(int personalDataId)
+        public Payment Read(int paymentId)
         {
-            return Storage.PersonalDataStorage.Read(personalDataId);
+            return Storage.PaymentStorage.Read(paymentId);
+        }
+
+        [HttpPost]
+        public Payment Update(int paymentId, Payment newPayment)
+        {
+            return Storage.PaymentStorage.Update(paymentId, newPayment);
+        }
+
+        [HttpDelete]
+        public bool Delete(int paymentId)
+        {
+            return Storage.PaymentStorage.Delete(paymentId); ;
         }
     }
 }

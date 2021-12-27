@@ -1,36 +1,36 @@
-﻿using pyrikova.Domain;
-using pyrikova.Repository;
+﻿using library.Domain;
+using library.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace pyrikova.Controllers
+namespace library.Controllers
 {
     [ApiController]
-    [Route("/feedback")]
-    public class FeedbackController : ControllerBase
+    [Route("/librarian")]
+    public class LibrarianController : ControllerBase
     {
         [HttpPut]
-        public Feedback Create(Feedback feedback)
+        public Librarian Create(Librarian librarian)
         {
-            Storage.FeedbackStorage.Create(feedback);
-            return feedback;
+            Storage.LibrarianStorage.Create(librarian);
+            return librarian;
         }
 
         [HttpGet]
-        public Feedback Read(int feedbackId)
+        public Librarian Read(int librarianId)
         {
-            return Storage.FeedbackStorage.Read(feedbackId);
+            return Storage.LibrarianStorage.Read(librarianId);
         }
 
-        [HttpPatch]
-        public Feedback Update(int feedbackId, Feedback newFeedback)
+        [HttpPost]
+        public Librarian Update(int librarianId, Librarian newLibrarian)
         {
-            return Storage.FeedbackStorage.Update(feedbackId, newFeedback);
+            return Storage.LibrarianStorage.Update(librarianId, newLibrarian);
         }
 
         [HttpDelete]
-        public bool Delete(int feedbackId)
+        public bool Delete(int librarianId)
         {
-            return Storage.FeedbackStorage.Delete(feedbackId);
+            return Storage.LibrarianStorage.Delete(librarianId); ;
         }
     }
 }

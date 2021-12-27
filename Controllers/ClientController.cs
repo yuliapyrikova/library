@@ -1,36 +1,36 @@
-﻿using pyrikova.Domain;
-using pyrikova.Repository;
+﻿using library.Domain;
+using library.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace pyrikova.Controllers
 {
     [ApiController]
-    [Route("/coach")]
-    public class CoachController : ControllerBase
+    [Route("/client")]
+    public class ClientController : ControllerBase
     {
         [HttpPut]
-        public Coach Create(Coach coach)
+        public Client Create(Client client)
         {
-            Storage.CoachStorage.Create(coach);
-            return coach;
+            Storage.ClientStorage.Create(client);
+            return client;
         }
 
         [HttpGet]
-        public Coach Read(int coachId)
+        public Client Read(int clientId)
         {
-            return Storage.CoachStorage.Read(coachId);
+            return Storage.ClientStorage.Read(clientId);
         }
 
-        [HttpPatch]
-        public Coach Update(int coachId, Coach newCoach)
+        [HttpPost]
+        public Client Update(int clientId, Client newClient)
         {
-            return Storage.CoachStorage.Update(coachId, newCoach);
+            return Storage.ClientStorage.Update(clientId, newClient);
         }
 
         [HttpDelete]
-        public bool Delete(int coachId)
+        public bool Delete(int clientId)
         {
-            return Storage.CoachStorage.Delete(coachId);
+            return Storage.ClientStorage.Delete(clientId); ;
         }
     }
 }

@@ -1,36 +1,36 @@
-﻿using pyrikova.Domain;
-using pyrikova.Repository;
+﻿using library.Domain;
+using library.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace pyrikova.Controllers
+namespace library.Controllers
 {
     [ApiController]
-    [Route("/news")]
-    public class NewsController : ControllerBase
+    [Route("/order")]
+    public class OrderController : ControllerBase
     {
         [HttpPut]
-        public News Create(News news)
+        public Order Create(Order order)
         {
-            Storage.NewsStorage.Create(news);
-            return news;
+            Storage.OrderStorage.Create(order);
+            return order;
         }
 
         [HttpGet]
-        public News Read(int newsId)
+        public Order Read(int orderId)
         {
-            return Storage.NewsStorage.Read(newsId);
+            return Storage.OrderStorage.Read(orderId);
         }
 
-        [HttpPatch]
-        public News Update(int newsId, News newNews)
+        [HttpPost]
+        public Order Update(int orderId, Order newOrder)
         {
-            return Storage.NewsStorage.Update(newsId, newNews);
+            return Storage.OrderStorage.Update(orderId, newOrder);
         }
 
         [HttpDelete]
-        public bool Delete(int newsId)
+        public bool Delete(int orderId)
         {
-            return Storage.NewsStorage.Delete(newsId);
+            return Storage.OrderStorage.Delete(orderId); ;
         }
     }
 }
